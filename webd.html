@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Days of Web Development - Fab Lab</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #5A2A7F;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+
+        h1.main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .intro-text {
+            font-size: 18px;
+        }
+
+        /* Learning Journey Section */
+        .learning-journey {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .section-title {
+            font-size: 30px;
+            color: #5A2A7F;
+            margin-bottom: 30px;
+        }
+
+        .journey-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .journey-day {
+            background-color: #fff;
+            border: 2px solid #5A2A7F;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .journey-day:hover {
+            transform: translateY(-10px);
+        }
+
+        .journey-day h3 {
+            color: #5A2A7F;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .journey-day p {
+            color: #555;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            background-color: #5A2A7F;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeInUp 2.5s ease-in-out;
+        }
+
+        .timeline-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            background-color: #fff;
+            color: #5A2A7F;
+            border-radius: 8px;
+            padding: 20px;
+            width: 120px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .timeline-item:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .timeline-item:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        .timeline-item:nth-child(7) {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5A2A7F;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* Thanks Section */
+        .thanks-section {
+            margin-top: 50px;
+            padding: 30px;
+            text-align: center;
+            background-color: #5A2A7F;
+            color: white;
+            font-size: 20px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1 class="main-title">7 Days of Web Development</h1>
+            <p class="intro-text">learning journey to master HTML, CSS, and JavaScript at Fab Lab!</p>
+        </div>
+    </header>
+
+    <!-- Learning Journey Section -->
+    <section class="learning-journey">
+        <h2 class="section-title">Our 7-Day Learning Plan</h2>
+        <div class="journey-container">
+            <div class="journey-day">
+                <h3>Day 1: HTML Basics</h3>
+                <p>Learn the core structure of web pages. Understand tags, attributes, and elements.</p>
+            </div>
+            <div class="journey-day">
+                <h3>Day 2: Styling with CSS</h3>
+                <p>Start designing the layout and structure. Learn to style with CSS and make it responsive.</p>
+            </div>
+            <div class="journey-day">
+                <h3>Day 3: JavaScript Fundamentals</h3>
+                <p>Introduce interactivity and learn basic scripting concepts like variables, functions, and events.</p>
+            </div>
+            <div class="journey-day">
+                <h3>Day 4: Advanced CSS Techniques</h3>
+                <p>Explore Flexbox, Grid, and responsive design to create modern, clean layouts.</p>
+            </div>
+            <div class="journey-day">
+                <h3>Day 5: JavaScript DOM Manipulation</h3>
+                <p>Learn to manipulate HTML elements dynamically with JavaScript, create interactive websites.</p>
+            </div>
+            <div class="journey-day">
+                <h3>Day 6: Advanced JavaScript Concepts</h3>
+                <p>Master advanced topics like callbacks, promises, and asynchronous programming.</p>
+            </div>
+            <div class="journey-day">
+                <h3>Day 7: Project Day</h3>
+                <p>Build your own interactive web project using everything you've learned over the week.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <h2 class="section-title">The 7-Day Timeline</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <p>Day 1: HTML Basics</p>
+            </div>
+            <div class="timeline-item">
+                <p>Day 2: CSS Styling</p>
+            </div>
+            <div class="timeline-item">
+                <p>Day 3: JavaScript Fundamentals</p>
+            </div>
+            <div class="timeline-item">
+                <p>Day 4: Advanced CSS</p>
+            </div>
+            <div class="timeline-item">
+                <p>Day 5: DOM Manipulation</p>
+            </div>
+            <div class="timeline-item">
+                <p>Day 6: Advanced JavaScript</p>
+            </div>
+            <div class="timeline-item">
+                <p>Day 7: Build Your Project</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thanks Section -->
+    <div class="thanks-section">
+        <p>Thank you for being part of this amazing learning journey. I'm grateful for the opportunity to learn and grow at Fab Lab.</p>
+        <p><strong>- Omprasad Navthale</strong></p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Created by Omprasad at Fab Lab | &copy; 2025</p>
+    </footer>
+
+</body>
+</html>

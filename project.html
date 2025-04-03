@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Player Chess</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .chessboard {
+            width: 400px; /* Adjust as needed */
+            height: 400px; /* Adjust as needed */
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            border: 2px solid #333;
+        }
+
+        .square {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em; /* For piece characters */
+            cursor: pointer;
+        }
+
+        .light {
+            background-color: #f0d9b5;
+        }
+
+        .dark {
+            background-color: #b58863;
+        }
+
+        .selected {
+            border: 2px solid blue; /* Indicate a selected piece */
+        }
+
+        .possible-move {
+            background-color: lightgreen; /* Indicate a possible move */
+        }
+
+        .turn-indicator {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="chessboard"></div>
+    <div class="turn-indicator">White's Turn</div>
+
+    <script>
+        const chessboard = document.querySelector('.chessboard');
+        const turnIndicator = document.querySelector('.turn-indicator');
+        let boardState = [
+            ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+            ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+            ['', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', ''],
+            ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+            ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'] // Using lowercase for black
+        ];
+        let selectedSquare = null;
+        let currentPlayer = 'white';
+
+        function renderBoard() {
+            chessboard.innerHTML = '';
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const square = document.createElement('div');
+                    square.classList.add('square');
+                    square.dataset.row = row;
+                    square.dataset.col = col;
+
+                    if ((row + col) % 2 === 0) {
+                        square.classList.add('light');
+                    } else {
+                        square.classList.add('dark');
+                    }
+
+                    const piece = boardState[row][col];
+                    square.textContent = piece;
+
+                    square.addEventListener('click', handleSquareClick);
+                    chessboard.appendChild(square);
+                }
+            }
+            turnIndicator.textContent = `${currentPlayer}'s Turn`;
+        }
+
+        function handleSquareClick(event) {
+            const square = event.target;
+            const row = parseInt(square.dataset.row);
+            const col = parseInt(square.dataset.col);
+            const piece = boardState[row][col];
+
+            if (selectedSquare) {
+                // Attempt to move the piece
+                const prevRow = parseInt(selectedSquare.dataset.row);
+                const prevCol = parseInt(selectedSquare.dataset.col);
+
+                if (isValidMove(prevRow, prevCol, row, col)) {
+                    boardState[row][col] = boardState[prevRow][prevCol];
+                    boardState[prevRow][prevCol] = '';
+                    selectedSquare = null;
+                    currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
+                    renderBoard();
+                } else {
+                    // Deselect if the move is invalid or clicking on another of your pieces
+                    if ((currentPlayer === 'white' && isUpperCase(piece)) || (currentPlayer === 'black' && isLowerCase(piece))) {
+                        deselectSquare();
+                        selectSquare(square);
+                    } else {
+                        deselectSquare();
+                    }
+                }
+            } else {
+                // Select a piece
+                if ((currentPlayer === 'white' && isUpperCase(piece)) || (currentPlayer === 'black' && isLowerCase(piece))) {
+                    selectSquare(square);
+                }
+            }
+        }
+
+        function selectSquare(square) {
+            deselectSquare();
+            selectedSquare = square;
+            square.classList.add('selected');
+            // In a more advanced version, you'd highlight possible moves here
+        }
+
+        function deselectSquare() {
+            if (selectedSquare) {
+                selectedSquare.classList.remove('selected');
+                selectedSquare = null;
+                // In a more advanced version, you'd clear any highlighted moves here
+            }
+        }
+
+        function isValidMove(startRow, startCol, endRow, endCol) {
+            // Very basic check: is the destination within the board?
+            if (endRow < 0 || endRow > 7 || endCol < 0 || endCol > 7) {
+                return false;
+            }
+
+            // Prevent moving to the same square
+            if (startRow === endRow && startCol === endCol) {
+                return false;
+            }
+
+            const piece = boardState[startRow][startCol];
+            const targetPiece = boardState[endRow][endCol];
+
+            // Prevent capturing your own pieces (very basic check)
+            if (currentPlayer === 'white' && isUpperCase(piece) && isUpperCase(targetPiece)) return false;
+            if (currentPlayer === 'black' && isLowerCase(piece) && isLowerCase(targetPiece)) return false;
+
+            // Add more sophisticated move validation for each piece type here!
+            // For now, we'll just allow any move to an empty square or capturing an opponent's piece
+
+            return true; // Replace this with actual rule checking!
+        }
+
+        function isUpperCase(str) {
+            return str === str.toUpperCase() && str !== str.toLowerCase();
+        }
+
+        function isLowerCase(str) {
+            return str === str.toLowerCase() && str !== str.toUpperCase();
+        }
+
+        // Initialize the board
+        renderBoard();
+    </script>
+</body>
+</html>
