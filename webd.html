@@ -1,281 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Days of Web Development - Fab Lab</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body and General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #5A2A7F;
-            color: #fff;
-            padding: 50px 0;
-            text-align: center;
-            animation: fadeIn 2s ease-in;
-        }
-
-        h1.main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .intro-text {
-            font-size: 18px;
-        }
-
-        /* Learning Journey Section */
-        .learning-journey {
-            background-color: #fff;
-            padding: 50px 20px;
-            text-align: center;
-            animation: fadeInUp 2s ease-in-out;
-        }
-
-        .section-title {
-            font-size: 30px;
-            color: #5A2A7F;
-            margin-bottom: 30px;
-        }
-
-        .journey-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .journey-day {
-            background-color: #fff;
-            border: 2px solid #5A2A7F;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .journey-day:hover {
-            transform: translateY(-10px);
-        }
-
-        .journey-day h3 {
-            color: #5A2A7F;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .journey-day p {
-            color: #555;
-        }
-
-        /* Timeline Section */
-        .timeline {
-            background-color: #5A2A7F;
-            color: #fff;
-            padding: 50px 20px;
-            text-align: center;
-            animation: fadeInUp 2.5s ease-in-out;
-        }
-
-        .timeline-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .timeline-item {
-            background-color: #fff;
-            color: #5A2A7F;
-            border-radius: 8px;
-            padding: 20px;
-            width: 120px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: slideIn 0.5s forwards;
-        }
-
-        .timeline-item:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .timeline-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .timeline-item:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        .timeline-item:nth-child(4) {
-            animation-delay: 0.6s;
-        }
-
-        .timeline-item:nth-child(5) {
-            animation-delay: 0.8s;
-        }
-
-        .timeline-item:nth-child(6) {
-            animation-delay: 1s;
-        }
-
-        .timeline-item:nth-child(7) {
-            animation-delay: 1.2s;
-        }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: #5A2A7F;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            font-size: 14px;
-        }
-
-        /* Thanks Section */
-        .thanks-section {
-            margin-top: 50px;
-            padding: 30px;
-            text-align: center;
-            background-color: #5A2A7F;
-            color: white;
-            font-size: 20px;
-            border-radius: 8px;
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fab Lab - 7 Days of Web Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fdf6e3;
+      color: #1c1c1c;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #d2b48c;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    header h1 {
+      font-size: 36px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 20px;
+    }
+    .day-card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideIn 0.8s ease-in-out;
+    }
+    .day-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .day-card h2 {
+      color: #4682b4;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .day-card ul {
+      list-style-type: square;
+      padding-left: 18px;
+    }
+    .day-card li {
+      margin-bottom: 8px;
+    }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Header Section -->
-    <header>
-        <div class="container">
-            <h1 class="main-title">7 Days of Web Development</h1>
-            <p class="intro-text">learning journey to master HTML, CSS, and JavaScript at Fab Lab!</p>
-        </div>
-    </header>
-
-    <!-- Learning Journey Section -->
-    <section class="learning-journey">
-        <h2 class="section-title">Our 7-Day Learning Plan</h2>
-        <div class="journey-container">
-            <div class="journey-day">
-                <h3>Day 1: HTML Basics</h3>
-                <p>Learn the core structure of web pages. Understand tags, attributes, and elements.</p>
-            </div>
-            <div class="journey-day">
-                <h3>Day 2: Styling with CSS</h3>
-                <p>Start designing the layout and structure. Learn to style with CSS and make it responsive.</p>
-            </div>
-            <div class="journey-day">
-                <h3>Day 3: JavaScript Fundamentals</h3>
-                <p>Introduce interactivity and learn basic scripting concepts like variables, functions, and events.</p>
-            </div>
-            <div class="journey-day">
-                <h3>Day 4: Advanced CSS Techniques</h3>
-                <p>Explore Flexbox, Grid, and responsive design to create modern, clean layouts.</p>
-            </div>
-            <div class="journey-day">
-                <h3>Day 5: JavaScript DOM Manipulation</h3>
-                <p>Learn to manipulate HTML elements dynamically with JavaScript, create interactive websites.</p>
-            </div>
-            <div class="journey-day">
-                <h3>Day 6: Advanced JavaScript Concepts</h3>
-                <p>Master advanced topics like callbacks, promises, and asynchronous programming.</p>
-            </div>
-            <div class="journey-day">
-                <h3>Day 7: Project Day</h3>
-                <p>Build your own interactive web project using everything you've learned over the week.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline">
-        <h2 class="section-title">The 7-Day Timeline</h2>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <p>Day 1: HTML Basics</p>
-            </div>
-            <div class="timeline-item">
-                <p>Day 2: CSS Styling</p>
-            </div>
-            <div class="timeline-item">
-                <p>Day 3: JavaScript Fundamentals</p>
-            </div>
-            <div class="timeline-item">
-                <p>Day 4: Advanced CSS</p>
-            </div>
-            <div class="timeline-item">
-                <p>Day 5: DOM Manipulation</p>
-            </div>
-            <div class="timeline-item">
-                <p>Day 6: Advanced JavaScript</p>
-            </div>
-            <div class="timeline-item">
-                <p>Day 7: Build Your Project</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Thanks Section -->
-    <div class="thanks-section">
-        <p>Thank you for being part of this amazing learning journey. I'm grateful for the opportunity to learn and grow at Fab Lab.</p>
-        <p><strong>- Omprasad Navthale</strong></p>
+  <header>
+    <h1>Fab Lab - 7 Days of Web Development</h1>
+    <p>Basics of HTML, CSS & JavaScript</p>
+  </header>
+  <div class="container">
+    <div class="day-card">
+      <h2>Day 1: HTML Basics</h2>
+      <ul>
+        <li><strong>&lt;!DOCTYPE html&gt;</strong>: Declares the document type.</li>
+        <li><strong>&lt;html&gt;</strong>: Root element of an HTML page.</li>
+        <li><strong>&lt;head&gt;</strong>: Contains metadata.</li>
+        <li><strong>&lt;title&gt;</strong>: Sets the title of the page.</li>
+        <li><strong>&lt;body&gt;</strong>: Contains the main content.</li>
+        <li><strong>&lt;p&gt;</strong>: Paragraph tag for text blocks.</li>
+        <li><strong>Lorem</strong>: Placeholder text generator.</li>
+        <li><strong>&lt;!-- Comment --&gt;</strong>: Used for comments in code.</li>
+      </ul>
     </div>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>Created by Omprasad at Fab Lab | &copy; 2025</p>
-    </footer>
-
+    <div class="day-card">
+      <h2>Day 2: Text and Layout Tags</h2>
+      <ul>
+        <li><strong>&lt;img&gt;</strong>: Adds images.</li>
+        <li><strong>&lt;b&gt;</strong>, <strong>&lt;i&gt;</strong>, <strong>&lt;u&gt;</strong>: Bold, italic, underline.</li>
+        <li><strong>&lt;sub&gt;</strong>, <strong>&lt;sup&gt;</strong>: Subscript and superscript.</li>
+        <li><strong>&lt;pre&gt;</strong>: Preserves spaces and line breaks.</li>
+        <li><strong>&lt;header&gt;</strong>, <strong>&lt;main&gt;</strong>, <strong>&lt;footer&gt;</strong>: Semantic layout tags.</li>
+        <li><strong>&lt;section&gt;</strong>, <strong>&lt;article&gt;</strong>, <strong>&lt;aside&gt;</strong>: Organize content.</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <h2>Day 3: Lists and Tables</h2>
+      <ul>
+        <li><strong>Ordered &amp; Unordered Lists</strong>: <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code></li>
+        <li><strong>&lt;li&gt;</strong>: List item.</li>
+        <li><strong>&lt;table&gt;</strong>, <strong>&lt;tr&gt;</strong>, <strong>&lt;th&gt;</strong>, <strong>&lt;td&gt;</strong>: Table structure.</li>
+        <li><strong>&lt;thead&gt;</strong>, <strong>&lt;tbody&gt;</strong>: Table head and body.</li>
+        <li><strong>&lt;caption&gt;</strong>: Table title.</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <h2>Day 4: Forms and Inputs</h2>
+      <ul>
+        <li><strong>&lt;form&gt;</strong>: Creates a form.</li>
+        <li><strong>&lt;input&gt;</strong>: Input field.</li>
+        <li><strong>type="text"</strong>, <strong>type="submit"</strong>, etc.</li>
+        <li><strong>&lt;label&gt;</strong>: Labels for form inputs.</li>
+        <li><strong>action</strong>: Where the form data is sent.</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <h2>Day 5: Introduction to CSS</h2>
+      <ul>
+        <li><strong>&lt;style&gt;</strong>: Internal CSS.</li>
+        <li><strong>Selectors</strong>: Target HTML elements.</li>
+        <li><strong>Properties</strong>: color, font-size, background, etc.</li>
+        <li><strong>Classes &amp; IDs</strong>: <code>.class</code> and <code>#id</code> to style elements.</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <h2>Day 6: Introduction to JavaScript</h2>
+      <ul>
+        <li><strong>&lt;script&gt;</strong>: Used to include JS.</li>
+        <li><strong>Variables</strong>: <code>let</code>, <code>const</code>, <code>var</code>.</li>
+        <li><strong>Basic Operations</strong>: +, -, *, /</li>
+        <li><strong>Functions</strong>: Define reusable code.</li>
+        <li><strong>alert()</strong>: Display pop-up messages.</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <h2>Day 7: Mini Project &amp; Recap</h2>
+      <ul>
+        <li>Created a mini profile or form page.</li>
+        <li>Used HTML layout, CSS styling, and JS alert.</li>
+        <li>Recap of all tags and features learned.</li>
+        <li>Practiced using browser dev tools.</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <p>Created by Omprasad Navthale 
+        <br>
+        Fab Lab </p>
+  </footer>
 </body>
 </html>
