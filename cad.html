@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fusion 360 - 7 Day Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #fdf6e3;
+      color: #1f1f1f;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #2e2e2e;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #e4d1b9;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 16px;
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      color: #393939;
+    }
+    .card h3 {
+      font-size: 1rem;
+      margin: 6px 0;
+      color: #2f2f2f;
+    }
+    .card ul {
+      padding-left: 20px;
+      color: #333;
+    }
+    .card li {
+      margin-bottom: 6px;
+    }
+    .card button {
+      margin-top: 10px;
+      background-color: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+    .card button:hover {
+      background-color: #555;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #5e5e5e;
+      font-size: 0.875rem;
+    }
+    footer a {
+      color: #2f2f2f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animated {
+      animation: fadeInUp 1s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fusion 360 in 7 Days - Fab Lab Journey</h1>
+  <div class="grid" id="dayGrid"></div>
+
+  <footer>
+    Made with 💙 at Fab Lab — Color Palette Inspired by Earth Tones<br>
+    Instagram: <a href="https://instagram.com/gyansager" target="_blank">@gyansager</a>
+  </footer>
+
+  <script>
+    const days = [
+      { day: "Day 1", title: "Introduction to Fusion 360", bullets: ["Overview of Fusion 360", "User Interface", "Navigation Tools"], image: "images/day1.jpg" },
+      { day: "Day 2", title: "Sketching Essentials", bullets: ["2D Sketch Basics", "Constraints", "Dimensions"], image: "images/day2.jpg" },
+      { day: "Day 3", title: "3D Features", bullets: ["Extrude", "Revolve", "Sweep", "Loft"], image: "images/day3.jpg" },
+      { day: "Day 4", title: "Assemblies", bullets: ["Creating Joints", "Motion Study", "Assembling Components"], image: "images/day4.jpg" },
+      { day: "Day 5", title: "Rendering", bullets: ["Applying Materials", "Appearance Settings", "Lighting Setup"], image: "images/day5.jpg" },
+      { day: "Day 6", title: "Simulation & Analysis", bullets: ["Basic Stress Test", "Load Application", "Simulation Tools"], image: "images/day6.jpg" },
+      { day: "Day 7", title: "3D Printing Prep", bullets: ["Exporting to STL", "Print Settings", "Project Showcase"], image: "images/day7.jpg" },
+      { day: "Project Day", title: "Chess Model in Fusion 360", bullets: ["Sketching Chess Pieces", "Using Revolve & Fillet", "Assembling Full Chess Set"], image: "images/project.jpg" }
+    ];
+
+    const grid = document.getElementById("dayGrid");
+    days.forEach((day, index) => {
+      const card = document.createElement("div");
+      card.className = "card animated";
+      card.style.animationDelay = `${index * 0.2}s`;
+
+      const bulletList = day.bullets.map(item => `<li>${item}</li>`).join('');
+
+      card.innerHTML = `
+        <div class="card-content">
+          <h2>${day.day}</h2>
+          <h3>${day.title}</h3>
+          <ul>${bulletList}</ul>
+          <button onclick="window.open('${day.image}', '_blank')">View Work of the Day</button>
+        </div>
+        <img src="${day.image}" alt="${day.title}" />
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
